@@ -22,16 +22,16 @@ export default class App extends Component {
   }
 
   todoData = [
-  {
-    id:"1",
-    title: "공부하기",
-    completed: true
-  },
-  {
-    id:"2",
-    title: "청소하기",
-    completed: false
-  }
+    {
+      id:"1",
+      title: "공부하기",
+      completed: true
+    },
+    {
+      id:"2",
+      title: "청소하기",
+      completed: false
+    }
   ]
 
   render() {
@@ -47,6 +47,7 @@ export default class App extends Component {
             <input type="checkbox" defaultChecked={false} />
             {data.title}
             <button style={this.btnStyle}>x</button>
+             {data.title}
           </div>
           ))}
         </div>

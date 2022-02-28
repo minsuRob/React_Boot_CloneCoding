@@ -6,7 +6,7 @@ export default class App extends Component {
   
   state = {
     todoData : [
-      {
+      /*{
         id:"1",
         title: "공부하기",
         completed: true
@@ -15,7 +15,7 @@ export default class App extends Component {
         id:"2",
         title: "청소하기",
         completed: false
-      }
+      }*/
     ],
     value: "",
   }
@@ -29,18 +29,18 @@ export default class App extends Component {
     float: "right"
   }
 
-  getStyle= () => {
+  getStyle= (completed) => {
     return {
       padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: 'none'
+      textDecoration: completed ? "line-through" : "none"
     }
   }
 
 
   handleClick=(id) => {
     let newTodoData = this.state.todoData.filter(data=> data.id !== id);
-    console.log('newTd', newTodoData);
+    //console.log('newTd', newTodoData);
     this.setState({ todoData : newTodoData});
   }
 
@@ -56,8 +56,19 @@ export default class App extends Component {
       title: this.state.value,
       completed: false,
     };
-    this.setState({todoData: [...this.state.todoData, newTodo]});
+    this.setState({todoData: [...this.state.todoData, newTodo], value: ""});
 
+  }
+
+  handleCompleteChange = (id) =>{
+    let newTodoData = this.state.todoData.map((data)=> {
+      if (data.id === id) {
+        // console.log('handleCompleteChange', id + ", "+ data.id);
+        data.completed = !data.completed;
+      }
+      return data;
+    });
+    this.setState({todoData: newTodoData});
   }
   render() {
     return(
@@ -68,8 +79,8 @@ export default class App extends Component {
           </div>
 
           {this.state.todoData.map((data)=>(
-          <div style={this.getStyle()} key={data.id}>
-            <input type="checkbox" defaultChecked={false} />
+          <div style={this.getStyle(data.completed)} key={data.id}>
+            <input type="checkbox" defaultChecked={false} onChange={()=> this.handleCompleteChange(data.id)}/>
              {data.title}
             <button style={this.btnStyle} onClick={() => this.handleClick(data.id)}>x</button>
           </div>

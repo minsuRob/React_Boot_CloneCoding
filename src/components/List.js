@@ -1,13 +1,15 @@
 import React from 'react'
 
+import {useCallback} from "react"
+
 const List =
 React.memo(({ id, title, completed, todoData, setTodoData, provided, snapshot, }) => {
         console.log('List', '');
-        const handleClick = (id) => {
+        const handleClick = useCallback((id) => {
             let newTodoData = todoData.filter(data => data.id !== id);
             //console.log('newTd', newTodoData);
             setTodoData(todoData)
-        }
+        }, [todoData]);
 
         const handleCompleteChange = (id) => {
             let newTodoData = todoData.map((data) => {

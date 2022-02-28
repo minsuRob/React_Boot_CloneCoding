@@ -9,7 +9,18 @@ import Form from './components/Form'
 
 export default function App(){
   
-  const [todoData, setTodoData] = useState([]);
+  const [todoData, setTodoData] = useState([
+    {
+      id: "1",
+      title: "study",
+      complete: "true"
+    },
+    {
+      id: "2",
+      title: "read a book",
+      complete: "false"
+    }
+  ]);
   const [value, setValue] = useState("");
 
   const handleSubmit=(e) => {

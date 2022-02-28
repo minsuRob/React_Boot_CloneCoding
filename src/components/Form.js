@@ -13,7 +13,6 @@ export default function Form({handleSubmit, value, setValue}) {
           <input
            type="text"
            name="value"
-           style={{flex:"10", padding:"5px"}}
            placeholoder="write the todo task"
            value={value}
            onChange={handleChange}
@@ -21,8 +20,6 @@ export default function Form({handleSubmit, value, setValue}) {
           <input
            type="submit"
            value="입력"
-           className="btn"
-           style={{flex: '1'}}
           />
         </form>  
     </div>

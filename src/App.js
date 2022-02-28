@@ -5,6 +5,8 @@ import {useState} from 'react'
 import List from './components/List'
 import Form from './components/Form'
 
+
+
 export default function App(){
   
   const [todoData, setTodoData] = useState([]);
@@ -24,9 +26,9 @@ export default function App(){
   }
 
     return(
-      <div className="container">
-        <div className="todoBlock">
-          <div className="title">
+      <div>
+        <div>
+          <div>
             <h1>할일</h1>
           </div>
 

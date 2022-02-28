@@ -1,10 +1,11 @@
 import React from 'react'
 
 export default function Form({ handleSubmit, value, setValue }) {
+  console.log('Form', '');
+
   const handleChange = (e) => {
     setValue(e.target.value);
   };
-
 
 
   return (

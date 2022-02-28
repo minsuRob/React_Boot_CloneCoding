@@ -8,6 +8,7 @@ import Form from './components/Form'
 
 
 export default function App(){
+  console.log('App', '');
   
   const [todoData, setTodoData] = useState([
     {

@@ -14,6 +14,9 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
     newTodoData.splice(result.destination.index, 0, reorderedItem);
     setTodoData(newTodoData);
   }
+  const pr = new Promise((reslove, reject)=> {
+
+  }); 
 
   return (
     <div>

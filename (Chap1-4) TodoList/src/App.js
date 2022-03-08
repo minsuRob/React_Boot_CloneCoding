@@ -10,21 +10,53 @@ import Form from './components/Form'
 export default function App(){
   console.log('App', '');
   
-  const [todoData, setTodoData] = useState([
-    {
-      id: "1",
-      title: "study",
-      complete: "true",
-      editable: "false"
-    },
-    {
-      id: "2",
-      title: "read a book",
-      complete: "false",
-      editable: "false"
-    }
-  ]);
+  if (localStorage.getItem('num') === null) localStorage.setItem('num',JSON.stringify([ { id: "1", title: "study", complete: "true", editable: "false" }, { id: "2", title: "read a book", complete: "false", editable: "false" } ]))
+  
+  //const [todoData, setTodoData] = useState(JSON.parse(localStorage.getItem('num')));
   const [value, setValue] = useState("");
+
+  const [todoData, setTodoData] = useLocalStorage('num', localStorage.getItem('num'));
+
+// Hook
+function useLocalStorage(key, initialValue) {
+  // State to store our value
+  // Pass initial state function to useState so logic is only executed once
+  const [storedValue, setStoredValue] = useState(() => {
+    if (typeof window === "undefined") {
+      return initialValue;
+    }
+    try {
+      // Get from local storage by key
+      const item = window.localStorage.getItem(key);
+      // Parse stored json or if none return initialValue
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      // If error also return initialValue
+      console.log(error);
+      return initialValue;
+    }
+  });
+  // Return a wrapped version of useState's setter function that ...
+  // ... persists the new value to localStorage.
+  const setValue = (value) => {
+    try {
+      // Allow value to be a function so we have same API as useState
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value;
+      // Save state
+      setStoredValue(valueToStore);
+      // Save to local storage
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      }
+    } catch (error) {
+      // A more advanced implementation would handle the error case
+      console.log(error);
+    }
+  };
+  return [storedValue, setValue];
+}
+
 
   const handleSubmit=(e) => {
     e.preventDefault();
@@ -60,7 +92,7 @@ export default function App(){
             </div>
           </div>
 
-          <Lists todoData={todoData} setTodoData={setTodoData}/>
+          <Lists todoData={todoData} setTodoData={setTodoData} editable={todoData}/>
           <Form handleSubmit={handleSubmit} value={value} setValue={setValue}/>
 
         </div>

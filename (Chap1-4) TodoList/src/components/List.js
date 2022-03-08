@@ -5,11 +5,12 @@ import {useCallback} from "react"
 const List =
 React.memo(({ id, title, completed, editable, todoData, setTodoData, provided, snapshot, }) => {
 
+
         console.log('List', '');
         const handleClick = useCallback((id) => {
             let newTodoData = todoData.filter(data => data.id !== id);
             //console.log('newTd', newTodoData);
-            setTodoData(todoData)
+            setTodoData(newTodoData)
         }, [todoData]);
 
         const handleCompleteChange = (id) => {
@@ -42,6 +43,7 @@ React.memo(({ id, title, completed, editable, todoData, setTodoData, provided, s
                 data.editable = !data.editable;
                 return data;
             });
+            //localStorage.setItem('num',JSON.stringify(newTodoData));
             setTodoData(newTodoData);
 
         }
@@ -60,13 +62,10 @@ React.memo(({ id, title, completed, editable, todoData, setTodoData, provided, s
                      </span>
                 </div>
                 <div className="items-center">
-                    <button 
-                    
-                    //className="px-4 py-2 float-right "
-                    className="p-2 text-pink-400 border-2 border-pink-200 rounded hover:text-white hover:bg-blue-200"
-                    onClick={onClick}>{editable ? "저장" : "수정"}</button>
-                </div>
-                <div className="items-center">
+                        <button 
+                        //className="px-4 py-2 float-right "
+                        className="p-2 text-pink-400 border-2 border-pink-200 rounded hover:text-white hover:bg-blue-200"
+                        onClick={onClick}>{editable ? "저장" : "수정"}</button>
                     <button 
                     //className="px-4 py-2 float-right"
                     className="p-2 text-pink-400 border-2 border-pink-200 rounded hover:text-white hover:bg-blue-200"

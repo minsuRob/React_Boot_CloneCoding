@@ -14,12 +14,14 @@ export default function App(){
     {
       id: "1",
       title: "study",
-      complete: "true"
+      complete: "true",
+      editable: "false"
     },
     {
       id: "2",
       title: "read a book",
-      complete: "false"
+      complete: "false",
+      editable: "false"
     }
   ]);
   const [value, setValue] = useState("");
@@ -31,6 +33,7 @@ export default function App(){
       id: Date.now(),
       title: value,
       completed: false,
+      editable: false,
     };
     setTodoData((prev) => [...prev, newTodo]);
     setValue("");

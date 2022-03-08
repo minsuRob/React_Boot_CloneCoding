@@ -36,6 +36,7 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
                       id={data.id}
                       title={data.title}
                       completed={data.completed}
+                      editable={data.editable}
                       todoData={todoData}
                       setTodoData={setTodoData}
                       provided={provided}

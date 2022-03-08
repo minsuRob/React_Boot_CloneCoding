@@ -17,9 +17,9 @@ export default function () {
     // console.log(request);
 
     const movieId = request.data.results[Math.floor(Math.random() * request.data.results.length)].id;
-    
-    const {data: movieDetail} = await axios.get(`movie/${movieId}`, {
-        params: {append_to_response:"videios"},
+
+    const { data: movieDetail } = await axios.get(`movie/${movieId}`, {
+      params: { append_to_response: "videos" },
     });
     setMovie(movieDetail);
 }

@@ -1,9 +1,13 @@
 import axios from '../api/axios';
 import React, { useEffect, useState } from 'react'
 import "./Row.css"
+import MovieModal from './MovieModal';
 
 const Row = ({ title, fetchUrl, isLargeRow, id }) => {
     const [movies, setMovies] = useState([]);
+    const [modalOpen, setModalOpen] = useState([false]);
+    const [movieSelected, setMovieSelected] = useState({});
+
     const BASE_URL = 'http://image.tmdb.org/t/p/original/';
     useEffect(() => {
         fetchMovieData();
@@ -14,6 +18,12 @@ const Row = ({ title, fetchUrl, isLargeRow, id }) => {
         // console.log("requests ", requests);
         setMovies(requests.data.results);
         return requests;
+    }
+
+    const handleClick = (movie) => {
+        console.log("modalOpen", modalOpen)
+        setModalOpen(true);
+        setMovieSelected(movie);
     }
 
     return (
@@ -38,6 +48,7 @@ const Row = ({ title, fetchUrl, isLargeRow, id }) => {
 
                             loading='lazy'
                             alt={movie.name}
+                            onClick={() => handleClick(movie)}
                         />
                     ))}
                 </div>
@@ -51,6 +62,15 @@ const Row = ({ title, fetchUrl, isLargeRow, id }) => {
                     </span>
                 </div>
             </div>
+
+            {
+                modalOpen && (
+                    <MovieModal
+                        {...movieSelected}
+                        setModalOpen={setModalOpen}
+                    />
+                )
+            }
         </section>
     );
 };

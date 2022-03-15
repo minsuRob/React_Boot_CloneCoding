@@ -5,7 +5,7 @@ import MovieModal from './MovieModal';
 
 const Row = ({ title, fetchUrl, isLargeRow, id }) => {
     const [movies, setMovies] = useState([]);
-    const [modalOpen, setModalOpen] = useState([false]);
+    const [modalOpen, setModalOpen] = useState(false);
     const [movieSelected, setMovieSelected] = useState({});
 
     const BASE_URL = 'http://image.tmdb.org/t/p/original/';

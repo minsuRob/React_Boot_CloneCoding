@@ -22,8 +22,17 @@ export default function Nav() {
 
   return ( 
     <nav className={`nav ${show && "nav__black"}`}>
-        <img alt='Netflix logo' className='nav__logo' onClick={()=> window.location.reload()} src="https://w.namu.la/s/984a3a524c3a76ef69967a3538f0b655d9e4a9b948314bd8d57f34a1502753104f1613f356c08d4352cdfad86bbea9cd56b2133ea5c9c7a57f1c065b1048cb5b999494f0fe88201304c91686aa79719fc2e29036900f820a6f5dadb00ebe4525"/> 
-        <img alt="User logged" className='nav__avartar' src="https://w.namu.la/s/443e78b28b5d7ed200c3e0177ca236a7dd29401234390a2235d01891ed289e83028b196adb1dee1da5532eb5f1eb2ba8198565de9ac87f33e8fd421e63106d02675755c86ce4862b22df1dbd61285e8cee484a2908eeade37dc7435cfdf07b0bcfceb1c9444b2971f06f5e07c9b7a1d2" />
+              <img
+        alt="Netflix logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/170px-Netflix_2015_logo.svg.png"
+        className="nav__logo"
+        onClick={() => (window.location.href = "/")}
+      />
+        <img
+        alt="User logged"
+        src="https://occ-0-4796-988.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41"
+        className="nav__avatar"
+      />
     </nav>
   );
 }

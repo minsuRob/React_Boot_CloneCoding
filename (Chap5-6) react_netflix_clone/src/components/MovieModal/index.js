@@ -20,7 +20,7 @@ function MovieModal({
         <div className='presentaiton' role="presentaiton">
             <div className='wrapper-modal'>
                 <div className="modal">
-                    <span onClick={() => setModalVisibility(false)}
+                    <span onClick={() => setModalOpen(false)}
                         className="modal-close">X</span>
                     <img
                     className="modal__poster-img"

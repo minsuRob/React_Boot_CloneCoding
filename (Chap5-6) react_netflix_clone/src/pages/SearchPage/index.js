@@ -4,24 +4,28 @@ import { useLocation } from 'react-router-dom'
 import './SearchPage.css';
 import { useState } from 'react';
 
+import {useDebounce} from "../../hooks/useDebounce"
+
 export default function SearchPage() {
   const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   };
   let qeury = useQuery();
   const searchTerm = qeury.get("q");
+  const debouncedSearchTerm = useDebounce(searchTerm, 500); 
 
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    if (searchTerm) {
-      fetchSearchMovie(searchTerm);
+    if (debouncedSearchTerm) {
+      fetchSearchMovie(debouncedSearchTerm);
     }
-  }, [searchTerm]);
+  }, [debouncedSearchTerm]);
 
-  const fetchSearchMovie = async (searchTerm) => {
+  const fetchSearchMovie = async (debouncedSearchTerm) => {
     try {
-      const request = await axios.get(`/search/multi?include_adult=false&query=${searchTerm}`);
+      const request = await axios.get(`/search/multi?include_adult=false&query=${debouncedSearchTerm}`);
+      console.log("request", request);
 
       setSearchResults(request.data.results);
 
@@ -50,7 +54,7 @@ export default function SearchPage() {
       ) : (
         <section className='no-results'>
           <div className='no-results__text'>
-            <p>Your search for "{searchTerm}" did not have any matches.</p>
+            <p>Your search for "{debouncedSearchTerm}" did not have any matches.</p>
             <p>Suggestion:</p>
             <ul>
               <li>Try different keywords</li>

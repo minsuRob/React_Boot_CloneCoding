@@ -20,7 +20,8 @@ export default function DetailPage() {
   if (!movie) return <div> ... loading</div>;
 
   return <section>
-    <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+    <img className='modal__poster-img'
+    src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
     alt='poster'/>
   </section>
 

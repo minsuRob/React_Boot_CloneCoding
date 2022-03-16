@@ -37,7 +37,7 @@ export default function SearchPage() {
             if (movie.backdrop_path !== null && movie.media_type !== "person") {
               const movieImageUrl = "https://image.tmdb.org/t/p/w500" + movie.backdrop_path;
               return (
-                <div className='movie'>
+                <div className='movie' key={movie.id}>
                   <div className='movie__column-poster'>
                     <img src={movieImageUrl} alt="" className='moive__poster' />
                   </div>

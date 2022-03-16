@@ -2,6 +2,7 @@ import axios from '../../api/axios';
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import './SearchPage.css';
+import { useState } from 'react';
 
 export default function SearchPage() {
   const useQuery = () => {
@@ -27,6 +28,7 @@ export default function SearchPage() {
     } catch (error) {
       console.log("Error", error);
     }
+  }
 
     const renderSearchResults = () => {
       return setSearchResults.length > 0 ? (
@@ -59,6 +61,4 @@ export default function SearchPage() {
     };
 
     return renderSearchResults();
-
   }
-}

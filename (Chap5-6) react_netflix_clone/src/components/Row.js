@@ -3,6 +3,16 @@ import React, { useEffect, useState } from 'react'
 import "./Row.css"
 import MovieModal from './MovieModal';
 
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination } from "swiper";
+import 'swiper/scss'
+import 'swiper/scss/navigation'
+import 'swiper/scss/pagination'
+
+SwiperCore.use([Navigation, Pagination])
+
+
 const Row = ({ title, fetchUrl, isLargeRow, id }) => {
     const [movies, setMovies] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
@@ -30,37 +40,31 @@ const Row = ({ title, fetchUrl, isLargeRow, id }) => {
         <section className="row">
             <h2>{title}</h2>
             <div className='slider'>
-                <div className='slider__arrow-left'>
-                    <span className='arrow'
-                        onClick={() => {
-                            document.getElementById(id).scrollLeft -= window.innerWidth - 80;
-                        }}
-                    >
-                        {"<"}
-                    </span>
-                </div>
-                <div id={id} className="row__posters">
-                    {movies.map((movie) => (
-                        <img
-                            key={movie.id}
-                            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-                            src={`${BASE_URL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
 
-                            loading='lazy'
-                            alt={movie.name}
-                            onClick={() => handleClick(movie)}
-                        />
-                    ))}
-                </div>
-                <div className='slider__arrow-right'>
-                    <span className='arrow'
-                        onClick={() => {
-                            document.getElementById(id).scrollLeft += window.innerWidth + 80;
-                        }}
-                    >
-                        {">"}
-                    </span>
-                </div>
+                <Swiper
+                    spaceBetween={20}
+                    slidesPerView={6}
+                    pagination={{ clickable: true }}
+                    scrollbar={{ draggable: true }}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => console.log("slide change")}
+                >
+                    <div id={id} className="row__posters">
+                        {movies.map((movie) => (
+                            <SwiperSlide key={movie.id}>
+                                <img
+                                    className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                                    src={`${BASE_URL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+
+                                    loading='lazy'
+                                    alt={movie.name}
+                                    onClick={() => handleClick(movie)}
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </div>
+                </Swiper>
+
             </div>
 
             {

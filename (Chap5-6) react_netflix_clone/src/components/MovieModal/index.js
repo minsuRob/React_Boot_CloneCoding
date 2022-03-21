@@ -1,6 +1,6 @@
 import "./MovieModal.css"
-import React, { useState } from 'react'
-
+import React, { useRef, useState } from 'react'
+import useClickOutside from "../../hooks/useClickOutside";
 
 
 function MovieModal({
@@ -14,12 +14,13 @@ function MovieModal({
     setModalOpen,
 }) {
     const BASE_URL = 'http://image.tmdb.org/t/p/original/';
-    const [ModalVisibility, setModalVisibility] = useState();
-
+    const ref = useRef();
+    useClickOutside(ref, ()=> setModalOpen(false));
+    
     return (
         <div className='presentaiton' role="presentaiton">
             <div className='wrapper-modal'>
-                <div className="modal">
+                <div ref={ref} className="modal">
                     <span onClick={() => setModalOpen(false)}
                         className="modal-close">X</span>
                     <img

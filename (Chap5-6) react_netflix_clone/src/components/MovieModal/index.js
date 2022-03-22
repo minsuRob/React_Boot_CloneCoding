@@ -18,7 +18,7 @@ function MovieModal({
     useClickOutside(ref, ()=> setModalOpen(false));
     
     return (
-        <div className='presentaiton' role="presentaiton">
+        <div className='presentation' role="presentation">
             <div className='wrapper-modal'>
                 <div ref={ref} className="modal">
                     <span onClick={() => setModalOpen(false)}

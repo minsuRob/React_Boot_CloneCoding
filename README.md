@@ -27,4 +27,6 @@
 - ![chanllenge2-1](https://user-images.githubusercontent.com/44646213/159439351-3eca3b6f-b88a-468c-9c69-3cb17db8014f.gif)
 - **작업사항**
   -  위 테스트를 모두 gh-pages 환경에서 테스트 완료. 
+  -  [https://minsurob.github.io/React_Boot_CloneCoding/](https://minsurob.github.io/React_Boot_CloneCoding/)
+  -  상단 링크에서 확인 가능
 

@@ -7,7 +7,7 @@
 
 ## 2차미션 스크린샷
 
-[2차미션 링크(마크다운)](https://github.com/minsuRob/React_Boot_CloneCoding/blob/main/doc/mission2.md, "2차미션")
+[2차미션 링크(마크다운)](https://github.com/minsuRob/React_Boot_CloneCoding/blob/main/doc/mission2.md)
 
 ## 3차미션 스크린샷
 

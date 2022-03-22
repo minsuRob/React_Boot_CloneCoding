@@ -3,7 +3,7 @@
 
 ## 1차미션 스크린샷
 
-- 22/03/09 이후로 다시 업로드 진행하겠습니다.
+[1차미션 링크(마크다운)](https://github.com/minsuRob/React_Boot_CloneCoding/blob/main/doc/mission1.md)
 
 ## 2차미션 스크린샷
 

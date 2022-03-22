@@ -28,6 +28,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<MainPage />} />
+          <Route path=':React_Boot_CloneCoding' element={<MainPage />} />
           <Route path=':movieId' element={<DetailPage />} />
           <Route path='search' element={<SearchPage />} />
         </Route>

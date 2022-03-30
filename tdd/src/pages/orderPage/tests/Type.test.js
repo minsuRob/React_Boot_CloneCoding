@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react'
+import { rest } from 'msw';
 import React, { useState } from 'react'
+import { server } from '../../../mocks/server';
 import Type from '../Type';
 
 test("dis img from server", async() => { // server에서 비동기처리해서 이미지 요청
@@ -13,4 +15,16 @@ test("dis img from server", async() => { // server에서 비동기처리해서 �
 
     const altText = productImages.map((element) => element.alt);
     expect(altText).toEqual(["America product", "England product"]);
+});
+
+test("when fetching product datas, face an error", async() => {
+    server.resetHandlers(
+        rest.get("http://localhost:4000/products", (req, res, ctx) =>
+            res(ctx.status(500))
+        )
+    );
+    render(<Type orderType="products" />);
+
+    const errorBanner = await screen.findByTestId("error-banner");
+    expect(errorBanner).toHaveTextContent("에러가 발생했습니다.");
 });

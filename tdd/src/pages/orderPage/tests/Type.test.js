@@ -19,9 +19,9 @@ test("dis img from server", async() => { // server에서 비동기처리해서 �
 
 test("when fetching product datas, face an error", async() => {
     server.resetHandlers(
-        rest.get("http://localhost:4000/products", (req, res, ctx) =>
-            res(ctx.status(500))
-        )
+        rest.get("http://localhost:4000/products", (req, res, ctx) => {
+           return res(ctx.status(500));
+        })
     );
     render(<Type orderType="products" />);
 

@@ -4,6 +4,8 @@ import Products from './Products';
 
 export default function Type({orderType}) {
     const [items, setItems] = useState([]);
+    const [error, setError] = useState(false);
+    //const [orderDatas, updateItemCount] = useContext(orderContext)
 
     useEffect(()=> {
         loadItems(orderType);
@@ -14,9 +16,13 @@ export default function Type({orderType}) {
             let response = await axios.get(`http://localhost:4000/${orderType}`);
             setItems(response.data);
         } catch(error) {
-            console.error(error);
+            setError(error);
         }
     };
+
+    if (error) {
+        return <ErrorBanner message="에러가 발생했습니다."/>;
+    }
 
     const ItemComponent = orderType === "products" ? Products : null;
 

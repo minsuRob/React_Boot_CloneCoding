@@ -6,8 +6,9 @@ test("dis img from server", async() => { // server에서 비동기처리해서 �
     render(<Type orderType="products" />);
 
     const productImages = await screen.findAllByRole("img", { // file이 하나가 아니기에 findAllByRole 사용
-        name: /products$/i, // 정규식
+        name: /product$/i, // 정규식
     });
+
     expect(productImages).toHaveLength(2); // sample이 2개이기에
 
     const altText = productImages.map((element) => element.alt);

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import React, { useState } from 'react'
+import Type from '../Type';
 
 test("dis img from server", async() => { // server에서 비동기처리해서 이미지 요청
     render(<Type orderType="products" />);

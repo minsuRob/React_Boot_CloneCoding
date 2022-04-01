@@ -55,8 +55,10 @@ export function OrderContextProvider(props) {
         }
 
 
-        return [{...orderCounts}, updateItemCount];
-    }, [orderCounts]);
+        return [
+            {...orderCounts, totals},
+            updateItemCount];
+    }, [orderCounts,totals]);
 
     return <OrderContext.Provider value={value} {...props}/>
        

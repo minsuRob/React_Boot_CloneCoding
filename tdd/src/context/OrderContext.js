@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useEffect, useState, useMemo, createContext } from "react";
 
 export const OrderContext = createContext();
 
@@ -22,7 +22,8 @@ export function OrderContextProvider(props) {
           products: productsTotal,
           options: optionsTotal,
           total: total,
-      }, [orderCounts]);
+      });
+    }, [orderCounts]);
       
     const pricePerItem = {
         products: 1000,

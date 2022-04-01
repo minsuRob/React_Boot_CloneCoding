@@ -4,7 +4,7 @@ export const OrderContext = createContext();
 
 export function OrderContextProvider(props) {
     const [orderCounts, setOrderCounts] = useState({
-        product: new Map(),
+        products: new Map(),
         options: new Map()
     });
 
@@ -19,8 +19,8 @@ export function OrderContextProvider(props) {
       const optionTotal = calculateSubtotal("options", orderCounts);
       const total = productTotal + optionTotal;
       setTotals({
-          products: productsTotal,
-          options: optionsTotal,
+          products: productTotal,
+          options: optionTotal,
           total: total,
       });
     }, [orderCounts]);

@@ -6,6 +6,12 @@ import Options from "./Options";
 import Products from './Products';
 
 export default function Type({orderType}) {
+
+    const handleChange = (event) => {
+        const currentValue= event.target.value;
+        updateItemCount(name, currentValue);
+    }
+
     const [items, setItems] = useState([]);
     const [error, setError] = useState(false);
     const [orderDatas, updateItemCount] = useContext(OrderContext)
@@ -34,6 +40,9 @@ export default function Type({orderType}) {
             key={item.name}
             name={item.name}
             imagePath={item.imagePath}
+            updateItemCount={
+                (itemName, newItemCount)=> updateItemCount(itemName, newItemCount, orderType)
+            }
         />
     ));
 

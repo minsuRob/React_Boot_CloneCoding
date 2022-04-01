@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { OrderContext } from './contexts/OrderContext';
+import { OrderContext, OrderContextProvider } from './context/OrderContext';
 
 ReactDOM.render(
-    <OrderContext.Provider value={}>
+    <OrderContextProvider>
       <App />
-    </OrderContext.Provider>,
+    </OrderContextProvider>,
   document.getElementById('root')
 );
 

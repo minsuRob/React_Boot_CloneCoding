@@ -13,6 +13,32 @@ export function OrderContextProvider(props) {
         options: 0,
         total: 0,
     })
+
+    useEffect(() => {
+      const productTotal = calculateSubtotal("products", orderCounts);
+      const optionTotal = calculateSubtotal("options", orderCounts);
+      const total = productTotal + optionTotal;
+      setTotals({
+          products: productsTotal,
+          options: optionsTotal,
+          total: total,
+      }, [orderCounts]);
+      
+    const pricePerItem = {
+        products: 1000,
+        options: 500,
+    }
+
+    function calculateSubtotal(orderType, orderCounts) { 
+        let optionCount = 0;
+        for (const count of orderCounts[orderType].values()) {
+            optionCount += count;
+        }
+
+        return optionCount * pricePerItem[orderType];
+        
+    }
+
     const value = useMemo(() => {
 
         function updateItemCount(itemName, newItemCount, orderType) {

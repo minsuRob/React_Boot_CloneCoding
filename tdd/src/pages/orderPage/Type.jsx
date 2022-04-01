@@ -7,7 +7,7 @@ import Products from './Products';
 export default function Type({orderType}) {
     const [items, setItems] = useState([]);
     const [error, setError] = useState(false);
-    //const [orderDatas, updateItemCount] = useContext(orderContext)
+    const [orderDatas, updateItemCount] = useContext(orderContext)
 
     useEffect(()=> {
         loadItems(orderType);

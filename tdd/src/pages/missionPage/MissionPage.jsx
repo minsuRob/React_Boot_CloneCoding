@@ -30,6 +30,10 @@ function missionPage({ setStep }) {
     setNumber(number - 1);
   }
 
+  function reset() {
+    setNumber(0);
+  }
+
   // const orderCompleted = async () => {
   //   try {
   //     let response = await axios.post(
@@ -69,12 +73,13 @@ function missionPage({ setStep }) {
   return (
     <div>
       <div id="count">
-        <button disabled={disable} onClick={delNum}>-</button>
+        <button name='minus' disabled={disable} onClick={delNum}>-</button>
         {" "}{number}{" "}
-        <button disabled={disable} onClick={addNum}>+</button>
+        <button name='plus' disabled={disable} onClick={addNum}>+</button>
         {"    "}<br />
       </div>
         <button onClick={changeDisableState}>비/활성화</button>
+        <button onClick={reset}>reset</button>
     </div>
   );
 

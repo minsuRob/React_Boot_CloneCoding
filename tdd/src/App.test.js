@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from './App';
 
@@ -50,5 +50,25 @@ test('From order to ', async ()=>{
         name: "주문 확인",
     });
     userEvent.click(confirmOrderButton);
+
+
+    // 주문 완료
+    //const loading = screen.getByText(/loading/i);
+    //expect(loading).toBeInTheDocument();
+
+    const completeHeader = await screen.findByRole("heading", {
+        name: "주문 성공!",
+    });
+    expect(completeHeader).toBeInTheDocument();
+    
+    // const loadingDisappeared = screen.queryByText("loading");
+    // expect(loadingDisappeared).toBeInTheDocument();
+
+    const firstPageButton = screen.getByRole("button", {name: "첫번째 페이지로!"});
+    userEvent.click(firstPageButton);
+
+    await waitFor(()=> {
+        screen.getByRole("spinbutton", {name: "America"});
+    })
 
 });

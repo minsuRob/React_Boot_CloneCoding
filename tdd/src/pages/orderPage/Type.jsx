@@ -7,10 +7,7 @@ import Products from './Products';
 
 export default function Type({orderType}) {
 
-    const handleChange = (event) => {
-        const currentValue= event.target.value;
-        updateItemCount(name, currentValue);
-    }
+
 
     const [items, setItems] = useState([]);
     const [error, setError] = useState(false);
@@ -54,7 +51,7 @@ export default function Type({orderType}) {
     <>
         <h2>주문 종류</h2>
         <p>하나의 가격</p>
-        <p> 총 가격: </p>
+        <p>상품 총 가격: {orderDatas.totals[orderType]}</p>
         <div
             style={{
                 display: "flex",

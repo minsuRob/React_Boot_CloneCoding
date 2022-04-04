@@ -3,6 +3,7 @@ import "./App.css";
 import OrderPage from "./pages/orderPage/OrderPage";
 import SummaryPage from "./pages/SummaryPage/SummaryPage";
 import CompletePage from "./pages/CompletePage/CompletePage";
+import MissionPage from "./pages/missionPage/MissionPage";
 import { OrderContextProvider } from "./context/OrderContext";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         {step === 0 && <OrderPage setStep={setStep}/>}
         {step === 1 && <SummaryPage setStep={setStep}/>}
         {step === 2 && <CompletePage setStep={setStep}/>}
+        {step === 3 && <MissionPage setStep={setStep}/>}
       </OrderContextProvider>
         
     </div>

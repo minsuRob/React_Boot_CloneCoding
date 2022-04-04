@@ -18,6 +18,7 @@ function OrderPage({setStep}) {
                 <div style={{ width: '50%' }}>
                     <h2>총 금액: {orderData.totals.total} </h2><br />
                     <button onClick={()=> setStep(1)}>주문하기</button>
+                    <button onClick={()=> setStep(3)}>미션</button>
                 </div>
             </div>
         </div>

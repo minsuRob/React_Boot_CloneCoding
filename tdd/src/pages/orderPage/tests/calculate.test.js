@@ -23,6 +23,30 @@ test("update pd's total when pd change", async() => {
         userEvent.clear(englandInput);
         userEvent.type(englandInput, "3");
         expect(productsTotal).toHaveTextContent("4000");
-
+        
     }
-)
+    )
+
+test("update option's total when opt change", async() => {
+    render(<Type orderType="options"/>);
+
+    const optionsTotal = screen.getByText("상품 총 가격: ", {exact: false});
+    expect(optionsTotal).toHaveTextContent("0");
+
+    const insuranceCheckbox = await screen.findByRole("checkbox", {// backend에서 가져온 후에 하기에 findByRole 사용
+        name: "Insurance",
+    });
+
+    userEvent.click(insuranceCheckbox);
+    expect(optionsTotal).toHaveTextContent('500');
+
+    const dinnerCheckbox = await screen.findByRole("checkbox", {
+        name: "Dinner",
+    });
+
+    userEvent.click(dinnerCheckbox);
+    expect(optionsTotal).toHaveTextContent('1000');
+
+    userEvent.click(dinnerCheckbox);
+    expect(optionsTotal).toHaveTextContent('500');
+});

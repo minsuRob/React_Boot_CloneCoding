@@ -4,19 +4,6 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import MissionPage from "../MissionPage";
 
-// test("checkbox and button", () => {
-//   render(<MissionPage />);
-//   const checkbox = screen.getByRole("checkbox", {
-//     name: "주문하려는 것을 확인하셨나요?",
-//   });
-//   expect(checkbox.checked).toEqual(false);
-
-//   const confirmButton = screen.getByRole("button", { name: "주문 확인" });
-//   expect(confirmButton.disabled).toBeTruthy();
-// });
-
-
-// 
 test("the counter starts at 0", () => {
   render(<MissionPage />);
   const counter = screen.getByText("0", {exact: false});
@@ -36,6 +23,7 @@ test("the counter starts at 0", () => {
 // test("plus button has correct text", () => {
 //   render(<MissionPage />);
 // });
+
 test("When the + button is pressed the counter changes to 1 ", () => {
   render(<MissionPage />);
     const resetBtn = screen.getByRole("button", {
